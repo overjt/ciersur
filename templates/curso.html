@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                          <h1>{{ object.nombre }}
+                                <font color="#777777">
+                                    <span style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;"> - Informacion de Curso</span>
+                                </font>
+                            </h1>
+                        </div>
+                        <p>{{ object.descripcion |markdown }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

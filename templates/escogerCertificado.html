@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                          <h1>Generar certificado</h1>
+                          <p>Escoja el curso</p>
+                        </div>
+                        <form class="form-horizontal" role="form" action="{{ action }}" method="post">{% csrf_token %}
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="ltcurso" class="control-label">Estudiante-Curso</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <select name="ltcurso" id="ltcurso" required>
+                                    {% for object in object_list %}
+                                    <option value="{{object.id}}">{{ object }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">Generar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

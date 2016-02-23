@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Calificando la actividad: {{ actividad.nombre }}</h1>
+                        <p>Curso: {{ curso }}</p>
+                    </div>
+                    <form class="form-horizontal" role="form" action="{% url 'calificar' %}" method="post">{% csrf_token %}
+                    <input type="hidden" name="actividad" id="actividad" value="{{ actividad.id }}"> 
+                    <input type="hidden" name="cohorte" id="cohorte" value="{{ cohorte }}"> 
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-field="id_estudiante">id LT</th>
+                                <th data-field="nombre_estudiante">Nombre LT</th>
+                                <th data-field="calificacion">Calificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for estudiante in estudiantes %}
+                            <tr> 
+                                <td>{{ estudiante.id_lt.id_persona.cedula }}</td>
+                                <td>{{ estudiante.id_lt.get_full_name }}</td>
+                                <td><input type="number" step="any" min="0" max="5" placeholder="0.0" name="est{{estudiante.id}}" class="form-control" required></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-default">Calificar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

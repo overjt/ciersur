@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<script type="text/javascript" src="{% static "js/Chart.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery-migrate-1.2.1.min.js" %}"></script>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reporte:</h1>
+                        <p>Porcentaje de estudiantes que reprobaron los cursos de un semestre por departamento - Semestre: {{ semestre }} </p>
+                    </div>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                    var ctx = $("#myChart").get(0).getContext("2d"); // This will get the first returned node in the jQuery collection. 
+
+                    var data = { labels: {{lista_deps |safe}},
+                                         datasets: [ { label: "My First dataset", 
+                                              fillColor: "rgba(220,220,220,0.5)",
+                                              strokeColor: "rgba(220,220,220,0.8)",
+                                              highlightFill: "rgba(220,220,220,0.75)",
+                                              highlightStroke: "rgba(220,220,220,1)",
+                                              data: {{ lista_aprobados }} },
+
+                                             { label: "My Second dataset",
+                                               fillColor: "rgba(151,187,205,0.5)",
+                                               strokeColor: "rgba(151,187,205,0.8)",
+                                               highlightFill: "rgba(151,187,205,0.75)",
+                                               highlightStroke: "rgba(151,187,205,1)",
+                                               data: {{lista_reprobados}} }
+                                           ] };
+
+                    var myBarChart = new Chart(ctx).Bar(data);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

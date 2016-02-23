@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reportes</h1>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{% url "reporte2" %}">Cursos con mayor número de asistentes en el mes (Top 10).</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte1" %}">Número de docentes estudiantes que han llegado en el mes de cada departamento.</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte3" %}">Cursos con menos potencial de avance.</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte4" %}">Porcentaje de estudiantes que aprobaron los cursos de un semestre por departamento</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte5" %}">Porcentaje de estudiantes que reprobaron los cursos de un semestre por departamento</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte6" %}">Detalle del reporte de notas por estudiante</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte7" %}">Histórico de estudiantes que hayan ganado un curso.</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte8" %}">Detalle de estudiantes en un curso por departamentos</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url "reporte9" %}">Porcentaje de aprobados y reprobados de un semestre por departamento</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

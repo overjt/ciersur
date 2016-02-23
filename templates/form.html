@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                          <h1>{{titulo_form}}</h1>
+                        </div>
+                        {% if form.errors and not form.non_field_errors %}
+                          <div class="error">
+                          {% if form.errors.items|length == 1 %}Por favor corrija los siguientes errores.{% else %}Por favor corrija el siguiente error.{% endif %}
+                          </div>
+                        {% endif %}
+
+                        {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        <div class="error">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <form class="form-horizontal" role="form" action="{{ action }}" method="post">{% csrf_token %}
+                            {{ form.management_form }}
+                            {% for item in form %}
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="{{item.name}}" class="control-label">{{item.label}}</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    {{item}}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-default">{{ submit_text }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

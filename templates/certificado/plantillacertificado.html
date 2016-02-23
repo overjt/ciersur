@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>Certificado</title>
+</head>
+<style>
+@page {size: letter landscape;}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-align: center;
+    font-size: 1em;
+}
+.nombre {
+    font-size: 250%;
+    font-style: bold;
+}
+.cedula {
+    font-size: 120%;
+    font-style: italic;
+}
+.curso {
+    font-size: 150%;
+    font-style: bold;
+}
+.tipo {
+    font-size: 150%;
+    font-style: bold;
+}
+</style>
+<body>
+<div class="center">
+<h1>El Centro de Innovación Educativa Regional CIER-SUR</h1>
+<br />
+<br />
+<p>Hace constar que
+<br />
+<div class="nombre">{{ nombre }}</div>
+<br />
+Con documento de Identificación No. <div class="cedula">{{cedula}}</div>
+<br />
+<br />
+Cursó y aprobó la acción de Formación
+<div class="curso">{{ curso }}</div> con <div class="tipo">{{tipo}}</div>
+</p>
+
+</div>
+</body>
+</html>

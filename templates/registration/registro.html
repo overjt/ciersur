@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Registro de usuario</h1>
+                    </div>
+                    <form role="form" method="post" action="{% url "registrar_post" %}" id="register-form">{% csrf_token %}
+                        <div class="form-group">
+                            <h3>Informacion Personal</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="nombre">Nombre</label>
+                            <input class="form-control" id="nombre" name="nombre" placeholder="Nombre" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="apellidos">Apellidos</label>
+                            <input class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="id_documento">Documento de Identificacion</label>
+                            <input class="form-control" id="id_documento" name="id_documento" placeholder="Documento de Identificacion" type="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="sexo">Sexo</label>
+                            <br />
+                            <input type="radio" name="sexo" id="sexo" value="M" checked="checked"> Masculino
+                            <br />
+                            <input type="radio" name="sexo" id="sexo" value="F"> Femenino
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="correo">Correo Electronico</label>
+                            <input class="form-control" id="correo" name="correo" placeholder="Correo Electronico" type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="celular">Celular</label>
+                            <input class="form-control" id="celular" name="celular" placeholder="Celular" type="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="direccion">Direccion</label>
+                            <input class="form-control" id="direccion" name="direccion" placeholder="Direccion" type="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="departamento">Departamento</label>
+                            <br />
+                            <select name="departamento" id="departamento" required>
+                              <option value="A">Amazonas</option>
+                              <option value="Caq">Caquetá</option>
+                              <option value="Ca">Cauca</option>
+                              <option value="H">Huila</option>
+                              <option value="N">Nariño</option>
+                              <option value="P">Putumayo</option>
+                              <option value="T">Tolima</option>
+                              <option value="VC">Valle del Cauca</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="ciudad">Ciudad</label>
+                            <input class="form-control" id="ciudad" name="ciudad" placeholder="ciudad" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="curso">A que curso se desea inscribir?</label>
+                            <br />
+                            <select name="curso" id="curso" required>
+                            {% for object in object_list %}
+                            <option value="{{object.id}}">{{ object.nombre }}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h3>Informacion Laboral</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="sede">Sede a la que pertenece</label>
+                            <input class="form-control" id="sede" placeholder="Sede" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="institucion">Institucion a la que pertenece</label>
+                            <input class="form-control" id="institucion" placeholder="Institucion" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="dane">Codigo Dane de la institucion que pertenece</label>
+                            <input class="form-control" id="dane" placeholder="Codigo Dane" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="grado">Grado</label>
+                            <input class="form-control" id="grado" placeholder="Grado" type="text">
+                        </div>
+                        <button type="submit" class="btn btn-default" value="Submit">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}        

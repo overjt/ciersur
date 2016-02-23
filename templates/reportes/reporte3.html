@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reporte:</h1>
+                        <p>Cursos con menos potencial de avance</p>
+                        <p>Se listan los cursos que tengan un porcentaje de estudiantes reprobados mayor o igual al 50% a lo largo de todas las cohortes</p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-field="posicion">Posición</th>
+                                <th data-field="curso">Curso</th>
+                                <th data-field="estudiantes">% Estudiantes reprobados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in object_list %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{key}}</td>
+                                    <td>{{value}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

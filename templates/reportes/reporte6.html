@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reporte:</h1>
+                        <p>Detalle del reporte de notas por estudiante</p>
+                        <p><strong>Estudiante:</strong> {{ estudiante }}</p>
+                        <p><strong>Curso:</strong> {{curso}}</p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-field="id_actividad">Actividad</th>
+                                <th data-field="calificacion">Calificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for object in object_list %}
+                            <tr> 
+                                <td><a href="{% url 'actividad' pk=object.id_actividad.id %}">{{ object.id_actividad }}</a></td>
+                                <td>{{ object.calificacion }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

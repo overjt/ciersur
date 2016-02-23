@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="page-header">
+                          <h1>Ingresar - Cier-Sur</h1>
+                    </div>
+                      {% if form.errors and not form.non_field_errors %}
+                      <div class="error">
+                      {% if form.errors.items|length == 1 %}Por favor corrija los siguientes errores.{% else %}Por favor corrija el siguiente error.{% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    <div class="error">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                        <form class="form-horizontal" role="form" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                            <div class="form-group">
+                            {{ form.username.errors }}
+                                <div class="col-sm-2">
+                                    <label for="id_username" class="control-label">Cedula del usuario</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="id_username" placeholder="Cédula" name="username" maxlength="200">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            {{ form.password.errors }}
+                                <div class="col-sm-2">
+                                    <label for="id_password" class="control-label">Contraseña</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="id_password" name="password">
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </div>
+                            </div>
+                              {% url 'password_reset' as password_reset_url %}
+                              {% if password_reset_url %}
+                              <div class="password-reset-link">
+                                <a href="{{ password_reset_url }}">Olvidó su contraseña?</a>
+                              </div>
+                              {% endif %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">Ingresar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                          document.getElementById('id_username').focus()
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

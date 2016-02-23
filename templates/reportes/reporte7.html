@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reporte:</h1>
+                        <p>Histórico de estudiantes que hayan ganado un curso</p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-field="id">id Estudiante</th>
+                                <th data-field="nombre">Nombre del estudiante</th>
+                                <th data-field="curso">Curso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for object in object_list %}
+                                <tr>
+                                    <td>{{ object.id_lt.id_persona.cedula }}</td>
+                                    <td>{{ object.id_lt.get_full_name }}</td>
+                                    <td>{{ object.id_curso_cohorte.id_curso.nombre }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

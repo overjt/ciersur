@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+        rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Cier-sur</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="index.html">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="listadocursos.html">Cursos</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Ingresar</a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="#">Inbox</a></li>
+                                <li><a href="#">Drafts</a></li>
+                                <li><a href="#">Sent Items</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Trash</a></li>
+                            </ul>
+                        </li>   
+                        <li>
+                            <a href="registro.html">Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Recoleccion datos adiccional: Programa Creatic CIER-SUR</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form role="form">
+                            <div class="form-group">
+                                <h3>Informacion Personal</h3>Los datos adiccionales en este formulario son
+                                privados y seran unicamente usados para la realizacion de un estudio analitico
+                                en el ambito del programa de formacion CREATIC del CIER-SUR. Muchas gracias
+                                por su colaboracion.</div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Documento de Identificacion</label>
+                                <input class="form-control" id="exampleInputPassword1"
+                                placeholder="Documento de Identificacion" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Fecha de Nacimiento</label>
+                                <input class="form-control" id="exampleInputPassword1"
+                                placeholder="Ejemplo: 12 de Diciembre 2012" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Sexo</label>
+                                <br>
+                                <input type="radio" name="sex" value="true" checked="">Masculino
+                                <br>
+                                <input type="radio" name="sex" value="false">Femenino</div>
+                            <div class="form-group">
+                                <h3>Informacion Laboral</h3>
+                            </div>
+                            <div class="form-group">
+                                <legend>De acuerdo con la zona en la que se encuentra la institución educativa
+                                    en la que desempeña su labor docente, la considera como</legend>
+                                <input
+                                type="checkbox" name="zona" value="Zona Urbana">Zona Urbana
+                                    <br>
+                                    <input type="checkbox" name="zona" value="Zona Urbana Marginal">Zona Urbana Marginal
+                                    <br>
+                                    <input type="checkbox" name="zona" value="Zona Rural">Zona Rural
+                                    <br>
+                                    <input type="checkbox" name="zona" value="Zona Rural de dificial acceso">Zona Rural de dificial acceso
+                                    <br>
+                            </div>
+                            <div class="form-group">
+                                <legend>De acuerdo con la zona en la que se encuentra la institución educativa
+                                    en la que desempeña su labor docente, la considera como</legend>
+                                <input
+                                type="radio" name="grado" value="academica" checked="">Academica
+                                    <br>
+                                    <input type="radio" name="grado" value="tecnica">Tecnica</div>
+                            <div class="form-group">
+                                <legend>Si la modalidad presentada en la institución educativa en la que desempeña
+                                    su labor docente es de carácter técnica, Elija de las siguientes especialidades
+                                    la que corresponda</legend>
+                                <input type="checkbox" name="especialidad" value="Agropecuaria">Agropecuaria
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Comercial">Comercial
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Promocion Social">Promocion Social
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Finanzas">Finanzas
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Administracion">Administracion
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Ecologia">Ecologia
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Medio Ambiente">Medio Ambiente
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Industrial">Industrial
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Informatica">Informatica
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Mineria
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Salud
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Recreacion
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Turismo
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Deporte
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Otro:
+                                <input class="form-control" id="exampleInputPassword1" placeholder="Especialidad"
+                                type="text">
+                            </div>
+                            <div class="form-group">
+                                <legend>Entendiendo la etnoeducación como una política para posicionar la educación
+                                    intercultural en todas las instituciones educativas del país, para que
+                                    todos los niños, niñas y familias entiendan que las culturas afrocolombiana,
+                                    indígena y gitana son parte de las raíces de nuestra nacionalidad. La institución
+                                    en la que usted se desempeña esta clasificada etnoeducativamente orientada
+                                    hacia la:</legend>
+                                <input type="checkbox" name="etnia" value="Etnia afrocolombiana">Etnia afrocolombiana
+                                <br>
+                                <input type="checkbox" name="etnia" value="Etnia indígena">Etnia indígena
+                                <br>
+                                <input type="checkbox" name="etnia" value="Etnia Rom">Etnia Rom
+                                <br>
+                                <input type="checkbox" name="etnia" value="Ninguna de las anteriores">Ninguna de las anteriores</div>
+                            <div class="form-group">
+                                <legend>Niveles escolares en los que ha desempeñado su labor académica</legend>
+                                <input
+                                type="checkbox" name="nivel" value="Transicion">Transicion(5 años)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Educación Inicial">Educación Inicial (Primera infancia 3 y 4 años)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Educación básica primaria">Educación básica primaria (1°, 2°, 3°, 5°)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Educación básica secundaria">Educación básica secundaria (6°, 7°, 8°, 9°)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Educación media">Educación media (10°, 11°)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Nivel superior">Nivel superior (Universidad / Educación Superior)
+                                    <br>
+                                    <input type="checkbox" name="nivel" value="Otro">Otro:
+                                    <input class="form-control" id="exampleInputPassword1" placeholder="Nivel Educativo"
+                                    type="text">
+                            </div>
+                            <div class="form-group">
+                                <legend>Grados Escolares en los que se ha desempeñado</legend>
+                                <input type="checkbox"
+                                name="especialidad" value="Transición">Transición (5 a 6 años)
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Educación inicial">Educación inicial (Primera infancia 3 y 5 años)
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Promocion Social">Promocion Social
+                                <br>
+                                <input type="checkbox" name="especialidad" value="1">1°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="2">2°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="3">3°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="4">4°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="5">5°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="6">6°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="7">7°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="8">8°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="9">9°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="10">10°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="11">11°
+                                <br>
+                                <input type="checkbox" name="especialidad" value="Mineria">Otro:
+                                <input class="form-control" id="exampleInputPassword1" placeholder="Especialidad"
+                                type="text">
+                            </div>
+                            <div class="form-group">
+                                <legend>Áreas de formación en las que se ha desempeñado</legend>
+                                <input type="checkbox"
+                                name="area" value="Ciencias Naturales">Ciencias Naturales y educación ambiental
+                                <br>
+                                <input type="checkbox" name="area" value="Ciencias Sociales">Ciencias Sociales: historia, geografía y constitución política
+                                <br>
+                                <input type="checkbox" name="area" value="Educación Artística">Educación Artística
+                                <br>
+                                <input type="checkbox" name="area" value="Educación ética">Educación ética y valores humanos
+                                <br>
+                                <input type="checkbox" name="area" value="Educación física">Educación física recreación y deportes
+                                <br>
+                                <input type="checkbox" name="area" value="Educación Religiosa">Educación Religiosa
+                                <br>
+                                <input type="checkbox" name="area" value="Humanidades">Humanidades, lengua castellana e idioma extranjero (inglés)
+                                <br>
+                                <input type="checkbox" name="area" value="Matemáticas">Matemáticas
+                                <br>
+                                <input type="checkbox" name="area" value="Tecnología">Tecnología e Informática</div>
+                            <div class="form-group">
+                                <legend>Nivel maximo de educación alcanzado</legend>
+                                <input type="radio" name="nivel"
+                                value="Técnico" checked="">Nivel Técnico Profesional (relativo a programas Técnicos Profesionales)
+                                <br>
+                                <input type="radio" name="nivel" value="Tecnológico">Nivel Tecnológico (relativo a programas tecnológicos)
+                                <br>
+                                <input type="radio" name="nivel" value="Profesional">Nivel Profesional (relativo a programas profesionales universitarios)
+                                <br>
+                                <input type="radio" name="nivel" value="Normalista superior">Normalista superior
+                                <br>
+                                <input type="radio" name="nivel" value="Licenciatura">Licenciatura
+                                <br>
+                                <input type="radio" name="nivel" value="Especializacion">Especializaciones (relativas a programas de Especialización Técnica Profesional,Especialización
+                                Tecnológica y Especializaciones Profesionales)
+                                <br>
+                                <input type="radio" name="nivel" value="Maestria">Maestrías
+                                <br>
+                                <input type="radio" name="nivel" value="Doctor">Doctorados</div>
+                            <div class="form-group">
+                                <h3>Informacion Laboral</h3>Las siguientes preguntas se refieren al numero
+                                de años que lleva desempeñando su labor docente. Por favor responda la
+                                pregunta solo con el numero de años: ej. 5, que se refiere a 5 años de
+                                experiencia.</div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el nivel preescolar
+                                    <br>Años que lleva ejerciendo la docencia en el nivel preescolar. 0 si no
+                                    ha ejercido su labor en el nivel preescolar.</label>
+                                <input class="form-control"
+                                id="exampleInputPassword1" placeholder="Años Experiencia" type="numeric">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el nivel de básica primaria (1°, 2°, 3°, 5°)
+                                    <br>Años que lleva ejerciendo la docencia en el nivel básica primaria. 0 si
+                                    no ha ejercido su labor en el nivel básica primaria.</label>
+                                <input class="form-control"
+                                id="exampleInputPassword1" placeholder="Años Experiencia" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el nivel de básica secundaria (6°, 7°, 8°, 9°)
+                                    <br>Años que lleva ejerciendo la docencia en el nivel básica secundaria. 0
+                                    si no ha ejercido su labor en el nivel básica secundaria.</label>
+                                <input
+                                class="form-control" id="exampleInputPassword1" placeholder="Años Experiencia"
+                                type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el nivel de educación media (10°, 11°)
+                                    <br>Años que lleva ejerciendo la docencia en el nivel de educación media.
+                                    0 si no ha ejercido su labor en el nivel de educación media</label>
+                                <input
+                                class="form-control" id="exampleInputPassword1" placeholder="Años Experiencia"
+                                type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el nivel de educación superior
+                                    <br>Años que lleva ejerciendo la docencia en el nivel de educación superior.
+                                    0 si no ha ejercido su labor en el nivel de educación superior.</label>
+                                <input
+                                class="form-control" id="exampleInputPassword1" placeholder="Años Experiencia"
+                                type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el ámbito rural
+                                    <br>Años que lleva ejerciendo la docencia en el ámbito rural. 0 si no ha ejercido
+                                    su labor en el ámbito rural.</label>
+                                <input class="form-control" id="exampleInputPassword1"
+                                placeholder="Años Experiencia" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el ámbito urbano
+                                    <br>Años que lleva ejerciendo la docencia en el ámbito urbano. 0 si no ha
+                                    ejercido su labor en el ámbito urbano</label>
+                                <input class="form-control"
+                                id="exampleInputPassword1" placeholder="Años Experiencia" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el sector publico
+                                    <br>Años que lleva ejerciendo la docencia en el sector publico. 0 si no ha
+                                    ejercido su labor en el sector publico</label>
+                                <input class="form-control"
+                                id="exampleInputPassword1" placeholder="Años Experiencia" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente en el sector privado
+                                    <br>Años que lleva ejerciendo la docencia en el sector privado. 0 si no ha
+                                    ejercido su labor en el sector privado</label>
+                                <input class="form-control"
+                                id="exampleInputPassword1" placeholder="Años Experiencia" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputPassword1">Experiencia docente total
+                                    <br>Total de años que lleva ejerciendo la labor docente (1 año incluye de
+                                    1 - 23 meses)</label>
+                                <input class="form-control" id="exampleInputPassword1"
+                                placeholder="Años Experiencia" type="text">
+                            </div>
+                            <button type="submit" class="btn btn-default" value="Submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

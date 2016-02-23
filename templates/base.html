@@ -1,0 +1,116 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <link rel="icon" href="{% static "icons/favicon.ico" %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/sorttable.js" %}"></script>
+        <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+        <link href="{% static "css/bootstrapOrg.min.css" %}" rel="stylesheet" type="text/css">
+        <link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css">
+        <link href="{% static "css/ciersur.css" %}" rel="stylesheet" type="text/css">
+        
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url "index" %}"><span>Cier-sur</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="{% if nbar == 'inicio' %}active{% endif %}">
+                            <a href="{% url "index" %}">Inicio</a>
+                        </li>
+                        <li class="{% if nbar == 'curso_list' %}active{% endif %}">
+                            <a href="{% url "curso_list" %}">Cursos</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="dropdown {% if nbar == 'panel' %}active{% endif %}">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Panel de usuario<b class="caret"></b></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    {% if user.get_tipo == '1' or user.get_tipo == '2'%}
+
+                                        {% if user.get_tipo == '1' %}
+                                            <li>
+                                                <a href="{% url 'admin:index' %}">Admin</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'mis_cursosmt' %}">Ingresar Notas</a>
+                                            </li>
+                                        {% endif %}
+
+                                        <li>
+                                            <a href="{% url 'activar_lt' %}">Activar un LT</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'reportes' %}">Reportes</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'crear_cohorte' %}">Crear Cohorte</a>
+                                        </li>
+                                    {% elif user.get_tipo == '3'%}
+                                    <li>
+                                        <a href="{% url 'mis_cursosmt' %}">Mis Cursos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mis_cursosmt' %}">Ingresar Notas</a>
+                                    </li>
+                                    {% elif user.get_tipo == '4' %}
+                                    <li>
+                                        <a href="{% url 'mis_cursos' %}">Mis Cursos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mis_cursos' %}">Mis Notas</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'registrar' %}">Registrarse a un nuevo curso</a>
+                                    </li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="{% url 'certificados' %}">Ver certificados</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="{% if nbar == 'password_change' %}active{% endif %}">
+                                <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}">Salir ({{ user.get_short_name }})</a>
+                            </li>
+                        {% else %}
+                            <li class="{% if nbar == 'ingresar' %}active{% endif %}">
+                                <a href="{% url 'login' %}">Ingresar</a>
+                            </li>
+                            <li class="{% if nbar == 'registrar' %}active{% endif %}">
+                                <a href="{% url 'registrar' %}">Registrarse</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>        
+        {% block content %} {% endblock %}
+        <footer class="section section-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Ciersur</h1>
+                        <p>Sistema educativo para profesores de alta calidad</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

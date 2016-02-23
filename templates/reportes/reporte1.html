@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Reporte:</h1>
+                        <p>Número de docentes estudiantes que han llegado en el mes de cada departamento - {{fecha}}</p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-field="departamento">Departamento</th>
+                                <th data-field="calificacion">No. de docentes estudiantes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in object_list.items %}
+                            <tr> 
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
