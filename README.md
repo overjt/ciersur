@@ -3,8 +3,9 @@
 CMS para el cier-sur
 ### Requerimientos
 * Python 3
-* Django 1.8.1
-
+* Django 1.8.2
+* django-markdown
+* weasyprint
 
 ### Instalación
 
@@ -13,6 +14,9 @@ $ git clone https://github.com/overjt/ciersur.git
 $ cd ciersur
 $ python manage.py runserver
 ```
+
+###Demo:
+http://ciersur.over.cf/
 
 ### Usuarios de Prueba
 
