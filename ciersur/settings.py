@@ -24,11 +24,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_markdown',
+    'django_markdown2',
     'app'
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,4 +93,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 AUTH_USER_MODEL = 'app.Usuario'
 LOGIN_REDIRECT_URL = '/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

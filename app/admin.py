@@ -3,9 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django_markdown.admin import MarkdownModelAdmin
-from django_markdown.widgets import AdminMarkdownWidget
-from django.db.models import TextField
+from django.db.models import TextField # AdminMarkdownWidget import removed
 from .models import *
 
 
@@ -16,7 +14,7 @@ class CursoAdmin(admin.ModelAdmin):
         'descripcion'
     )
     prepopulated_fields = {'slug': ('nombre',)}
-    formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
+    # formfield_overrides removed
 
 class ActividadAdmin(admin.ModelAdmin):
     list_display = (
@@ -24,7 +22,7 @@ class ActividadAdmin(admin.ModelAdmin):
         'descripcion',
         'porcentaje'
     )
-    formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
+    # formfield_overrides removed
 
 
 class PersonaAdmin(admin.ModelAdmin):

@@ -13,13 +13,14 @@ class CierUserManager(BaseUserManager):
         persona = Persona.objects.get(cedula=id_persona)
         user = self.model(id_persona=persona,tipo=tipo)
         user.set_password(password)
+        user.save() # Added save
         return user
 
     def create_superuser(self, id_persona, tipo,
                          password):
         user = self.create_user(id_persona, tipo, 
                                 password=password)
-        user.tipo = 1
+        user.tipo = '1' # Changed to string
         user.is_admin = True
         user.save()
         return user
@@ -59,7 +60,7 @@ class Persona(models.Model):
         verbose_name_plural = "Personas"
 
 class Usuario(AbstractBaseUser):
-    id_persona = models.OneToOneField(Persona, verbose_name="Cédula de la persona")
+    id_persona = models.OneToOneField(Persona, on_delete=models.CASCADE, verbose_name="Cédula de la persona")
     TIPOS = (
         ('1', 'Administrador'),
         ('2', 'Secretaria'),
@@ -108,34 +109,30 @@ class Usuario(AbstractBaseUser):
         return self.is_admin
 
 class Historial_Academico(models.Model):
-    id_docente = models.ForeignKey(Persona, verbose_name="Cédula del docente")
+    id_docente = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Cédula del docente")
     promocion = models.CharField(max_length=15)
     titulo = models.CharField(max_length=50)
     institucion = models.CharField(max_length=50)
-
-    class Meta:
-        unique_together = (("id_docente", "promocion","titulo","institucion"),)
 
     def __str__(self):
         return "%s - %s - %s. %s" % (self.id_docente, self.promocion, self.titulo, self.institucion)
 
     class Meta:
+        unique_together = (("id_docente", "promocion","titulo","institucion"),)
         verbose_name = "Historial Académico"
         verbose_name_plural = "Historiales Académicos"
 
 class Historial_Laboral(models.Model):
-    id_docente = models.ForeignKey(Persona,verbose_name="Cédula del docente")
+    id_docente = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Cédula del docente")
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     institucion = models.CharField(max_length=50)
-
-    class Meta:
-        unique_together = (("id_docente", "fecha_inicio","fecha_fin","institucion"),)
 
     def __str__(self):
         return "%s - (%s)-(%s). %s" % (str(self.id_docente),str(self.fecha_inicio), str(self.fecha_fin), self.institucion)
 
     class Meta:
+        unique_together = (("id_docente", "fecha_inicio","fecha_fin","institucion"),)
         verbose_name = "Historial Laboral"
         verbose_name_plural = "Historiales Laborales"
 
@@ -155,23 +152,21 @@ class Curso(models.Model):
         verbose_name_plural = "Cursos"
 
 class Actividad(models.Model):
-    id_curso = models.ForeignKey(Curso,verbose_name="Curso")
+    id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso")
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=1000)
     porcentaje = models.FloatField()
-
-    class Meta:
-        unique_together = (("id_curso", "nombre"),)
 
     def __str__(self):
         return "%s - %s" % (str(self.id_curso), self.nombre)
 
     class Meta:
+        unique_together = (("id_curso", "nombre"),)
         verbose_name = "Actividad"
         verbose_name_plural = "Actividades"
 
 class Cohorte(models.Model):
-    id_curso = models.ForeignKey(Curso,verbose_name="Curso")
+    id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso")
     semestre = models.CharField(max_length=50)
 
     def __str__(self):
@@ -179,28 +174,23 @@ class Cohorte(models.Model):
 
 
 class Posible_LT(models.Model):
-    id_docente = models.ForeignKey(Persona,verbose_name="Cédula del docente")
-    id_curso = models.ForeignKey(Curso,verbose_name="Curso")
-
-    class Meta:
-        unique_together = (("id_docente", "id_curso"),)
+    id_docente = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Cédula del docente")
+    id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso")
 
     def __str__(self):
         return "%s - %s" % (str(self.id_docente), str(self.id_curso))
 
     class Meta:
+        unique_together = (("id_docente", "id_curso"),)
         verbose_name = "Posible LT"
         verbose_name_plural = "Posibles LT"
 
 
 class LT_Curso(models.Model):
-    id_lt = models.ForeignKey(Usuario,verbose_name="Cédula del docente")
-    id_curso_cohorte = models.ForeignKey(Cohorte,verbose_name="Curso - Cohorte")
+    id_lt = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="Cédula del docente")
+    id_curso_cohorte = models.ForeignKey(Cohorte, on_delete=models.CASCADE, verbose_name="Curso - Cohorte")
     fecha_inscripcion = models.DateField()
-    aprobado =  models.NullBooleanField(default=None)
-    class Meta:
-        unique_together = (("id_lt", "id_curso_cohorte"),)
-
+    aprobado =  models.BooleanField(null=True, default=None) # Changed NullBooleanField to BooleanField
     def __str__(self):
         return "%s - %s" % (str(self.id_lt),str(self.id_curso_cohorte))
 
@@ -208,33 +198,29 @@ class LT_Curso(models.Model):
         return self.id_curso_cohorte.id_curso
 
     class Meta:
+        unique_together = (("id_lt", "id_curso_cohorte"),)
         verbose_name = "Curso-LT"
         verbose_name_plural = "Cursos-LT"
 
 
 class MT_Curso(models.Model):
-    id_mt = models.ForeignKey(Usuario,verbose_name="Cédula del docente")
-    id_curso_cohorte = models.ForeignKey(Cohorte,verbose_name="Curso - Cohorte")
-
-    class Meta:
-        unique_together = (("id_mt", "id_curso_cohorte"),)
+    id_mt = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="Cédula del docente")
+    id_curso_cohorte = models.ForeignKey(Cohorte, on_delete=models.CASCADE, verbose_name="Curso - Cohorte")
 
     def __str__(self):
         return "%s - %s" % (str(self.id_mt),str(self.id_curso_cohorte))
 
 
     class Meta:
+        unique_together = (("id_mt", "id_curso_cohorte"),)
         verbose_name = "Curso-MT"
         verbose_name_plural = "Cursos-MT"
 
 
 class Nota(models.Model):
-    id_lt_curso = models.ForeignKey(LT_Curso, verbose_name="LT-Curso")
-    id_actividad = models.ForeignKey(Actividad,verbose_name="Actividad")
+    id_lt_curso = models.ForeignKey(LT_Curso, on_delete=models.CASCADE, verbose_name="LT-Curso")
+    id_actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE, verbose_name="Actividad")
     calificacion = models.FloatField(validators = [MinValueValidator(0), MaxValueValidator(5)])
-
-    class Meta:
-        unique_together = (("id_lt_curso", "id_actividad"),)
 
     def __str__(self):
         return "%s - %s - %s" % (str(self.id_lt_curso),str(self.id_actividad), str(self.calificacion))
@@ -244,13 +230,13 @@ class Nota(models.Model):
             raise IndexError('The note must be between 0 and 5')
         else:
             self.calificacion = nota
-
     class Meta:
+        unique_together = (("id_lt_curso", "id_actividad"),)
         verbose_name = "Nota"
         verbose_name_plural = "Notas"        
 
 class Certificado(models.Model):
-    id_lt_curso = models.OneToOneField(LT_Curso, verbose_name="LT-Curso",primary_key=True)
+    id_lt_curso = models.OneToOneField(LT_Curso, on_delete=models.CASCADE, verbose_name="LT-Curso",primary_key=True)
     TIPOS = (
         ('A', 'Asistencia'),
         ('P', 'Participación'),
